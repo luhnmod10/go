@@ -14,7 +14,7 @@ go get github.com/luhnmod10/go
 ```
 
 ```go
-_ = luhn.Valid("4242424242424242")
+_ = luhnmod10.Valid("4242424242424242")
 ```
 
 ## Contributing

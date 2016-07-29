@@ -1,4 +1,5 @@
-package luhn
+// Package luhnmod10 is a fast and simple in-place implementation of the luhn check algorithm.
+package luhnmod10
 
 // Valid returns true if the number string is luhn valid, and false otherwise.
 // The number passed to the function must contain only numeric characters otherwise behavior is undefined.

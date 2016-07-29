@@ -1,4 +1,4 @@
-package luhn
+package luhnmod10
 
 import "testing"
 

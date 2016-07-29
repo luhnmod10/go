@@ -1,4 +1,4 @@
-package luhn_test
+package luhnmod10_test
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 
 func ExampleValid_true() {
 	number := "4242424242424242"
-	valid := luhn.Valid(number)
+	valid := luhnmod10.Valid(number)
 	fmt.Println(number, "is valid:", valid)
 
 	// Output:
@@ -17,7 +17,7 @@ func ExampleValid_true() {
 
 func ExampleValid_false() {
 	number := "4242424242424241"
-	valid := luhn.Valid(number)
+	valid := luhnmod10.Valid(number)
 	fmt.Println(number, "is valid:", valid)
 
 	// Output:
