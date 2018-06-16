@@ -38,3 +38,61 @@ func TestValid(t *testing.T) {
 		}
 	}
 }
+
+func TestChecksum(t *testing.T) {
+	tests := []struct {
+		CardNumber       string
+		ExpectedChecksum int
+	}{
+		{"0", 0},
+		{"00", 0},
+		{"18", 10},
+		{"0000000000000000", 0},
+		{"4242424242424240", 78},
+		{"4242424242424241", 79},
+		{"4242424242424242", 80},
+		{"4242424242424243", 81},
+		{"4242424242424244", 82},
+		{"4242424242424245", 83},
+		{"4242424242424246", 84},
+		{"4242424242424247", 85},
+		{"4242424242424248", 86},
+		{"4242424242424249", 87},
+		{"42424242424242493", 72},
+		{"42424242424242426", 70},
+		{"424242424242424267", 90},
+		{"4242424242424242675", 80},
+		{"000000018", 10},
+		{"99999999999999999999", 180},
+		{"99999999999999999999999999999999999999999999999999999999999999999997", 610},
+	}
+
+	for _, test := range tests {
+		checksum := Checksum(test.CardNumber)
+		if checksum == test.ExpectedChecksum {
+			t.Logf("Checksum(%#v) = %#v", test.CardNumber, checksum)
+		} else {
+			t.Errorf("Checksum(%#v) = %#v, expected %#v", test.CardNumber, checksum, test.ExpectedChecksum)
+		}
+	}
+}
+
+func TestCheckDigit(t *testing.T) {
+	tests := []struct {
+		CardNumber         string
+		ExpectedCheckDigit int
+	}{
+		{"00", 0},
+		{"000", 0},
+		{"424242424242424", 2},
+	}
+
+	for _, test := range tests {
+		checkDigit := CheckDigit(test.CardNumber)
+		if checkDigit == test.ExpectedCheckDigit {
+			t.Logf("CheckDigit(%#v) = %#v", test.CardNumber, checkDigit)
+		} else {
+			t.Errorf("CheckDigit(%#v) = %#v, expected %#v", test.CardNumber, checkDigit, test.ExpectedCheckDigit)
+		}
+	}
+}

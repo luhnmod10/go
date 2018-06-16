@@ -23,3 +23,21 @@ func ExampleValid_false() {
 	// Output:
 	// 4242424242424241 is valid: false
 }
+
+func ExampleChecksum() {
+	number := "4242424242424241"
+	checksum := luhnmod10.Checksum(number)
+	fmt.Println(number, "checksum:", checksum)
+
+	// Output:
+	// 4242424242424241 checksum: 79
+}
+
+func ExampleCheckDigit() {
+	number := "424242424242424"
+	checkDigit := luhnmod10.CheckDigit(number)
+	fmt.Println(number, "check digit:", checkDigit)
+
+	// Output:
+	// 424242424242424 check digit: 2
+}
